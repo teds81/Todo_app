@@ -8,4 +8,14 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss(),
   ],
+  server: {
+    // Pour le développement, redirige / vers /portfolio
+    proxy: {
+      '/': {
+        target: 'https://teds81.github.io/',
+        changeOrigin: true,
+        rewrite: (path) => path === '/' ? '/Todo_app/' : path
+      }
+    }
+  }
 })
